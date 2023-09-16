@@ -1,5 +1,5 @@
 import React from 'react';
-import BackgroundImage from './img/birmingham-museums-trust-1HXd0iEFUDc-unsplash.jpg';
+import BackgroundImage from './img/gregory-gomez-OqgeSOpM1UE-unsplash.jpg';
 import './App.css';
 
 function App() {
@@ -26,7 +26,9 @@ function App() {
                         alt="profileBackgroundImage"/>
                 </div>
                 <div className={'info'}>
-                    Avatar pic + info + My posts
+                    <div>Avatar pic + info + My posts</div>
+                    <div>My posts</div>
+                    <div>Comments</div>
                 </div>
 
             </div>

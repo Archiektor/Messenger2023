@@ -53,15 +53,23 @@
     margin-top: 2rem;
 }
 
-.bg-wrapper  {
+.bg-wrapper {
     background-color: #fff;
 }
 
 .bg-wrapper > img {
     width: 100%;
-    max-height: 15vh;
+    max-height: 30vh;
 }
 
 .info {
     background-color: #63d27f;
+    display: flex;
+    flex-direction: column;
+}
+
+.info div {
+    /*delete after*/
+    height: 200px;
+    border: 2px red solid;
 }
