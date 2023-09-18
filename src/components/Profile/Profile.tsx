@@ -26,7 +26,7 @@ const Profile = () => {
                             <li className={'data-wrapper__education'}>BNTU</li>
                             <li className={'data-wrapper__website'}>www.szcz.com</li>
                         </ul>
-                    </div>
+                    </div>f
                 </div>
                 <MyPosts/>
                 <div className={'comments'}>
