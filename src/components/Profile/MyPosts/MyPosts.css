@@ -1,0 +1,29 @@
+.new-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.new-post__title {
+    margin-left: 0.75rem;
+    color: lightslategray;
+    font-size: 2rem;
+}
+
+.new-post__write-text {
+    margin-left: 1.25rem;
+    max-width: 15rem;
+}
+
+.new-post__send-btn {
+    width: 5rem;
+    align-self: end;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.1rem;
+    background-color: lightblue;
+    border: none;
+    margin-right: 0.75rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
+}

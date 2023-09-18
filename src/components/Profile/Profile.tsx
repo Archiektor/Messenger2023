@@ -2,6 +2,8 @@ import React from "react";
 import './Profile.css';
 import BackgroundImage from "../../img/gregory-gomez-OqgeSOpM1UE-unsplash.jpg";
 import LichKing from "../../img/tlk.webp";
+import MyPosts from "./MyPosts/MyPosts";
+import Post from "./Post/Post";
 
 const Profile = () => {
     return (
@@ -26,21 +28,15 @@ const Profile = () => {
                         </ul>
                     </div>
                 </div>
-                <div className={'posts'}>
-                    <div className={`post`}>
-                        <h3 className={`post__title`}>My posts</h3>
-                        <input className={`post__write-text`} type="text" placeholder={`your news`}/>
-                        <button className={`post__send-btn`}>Send</button>
-                    </div>
-                </div>
+                <MyPosts/>
                 <div className={'comments'}>
-                    <div className={`comment`}>
-                        <p className={`comment__text`}>Comment #1</p>
-                    </div>
-                    <div className={`comment`}>
-                        <p className={`comment__text`}>Comment #2</p>
-                    </div>
+                    <Post message={`Comment #1`}/>
+                    <Post message={`Comment #2`}/>
+                    <Post message={`Comment #3`}/>
+                    <Post message={`Comment #4`}/>
+                    <Post message={`Comment #5`}/>
                 </div>
+
             </div>
         </div>
     )

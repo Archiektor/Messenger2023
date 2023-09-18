@@ -1,0 +1,19 @@
+.post__text {
+    font-size: 1.1rem;
+    position: relative;
+    display: inline;
+    margin-left: 1.5rem;
+}
+
+.post__text:before {
+    content: '';
+    display: inline-block;
+    background-color: yellow;
+    width: 20px;
+    height: 20px;
+    border: 1px black solid;
+    border-radius: 50%;
+    position: absolute;
+    left: -30px;
+    top: 1px;
+}
