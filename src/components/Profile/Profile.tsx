@@ -3,7 +3,6 @@ import './Profile.css';
 import BackgroundImage from "../../img/gregory-gomez-OqgeSOpM1UE-unsplash.jpg";
 import LichKing from "../../img/tlk.webp";
 import MyPosts from "./MyPosts/MyPosts";
-import Post from "./Post/Post";
 
 const Profile = () => {
     return (
@@ -26,17 +25,9 @@ const Profile = () => {
                             <li className={'data-wrapper__education'}>BNTU</li>
                             <li className={'data-wrapper__website'}>www.szcz.com</li>
                         </ul>
-                    </div>f
+                    </div>
                 </div>
                 <MyPosts/>
-                <div className={'comments'}>
-                    <Post message={`Comment #1`}/>
-                    <Post message={`Comment #2`}/>
-                    <Post message={`Comment #3`}/>
-                    <Post message={`Comment #4`}/>
-                    <Post message={`Comment #5`}/>
-                </div>
-
             </div>
         </div>
     )

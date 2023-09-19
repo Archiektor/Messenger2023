@@ -22,7 +22,7 @@
 
 .content__info > div {
     /*delete after*/
-    height: 200px;
+    max-height: fit-content;
     border: 2px red solid;
 }
 
@@ -40,7 +40,8 @@
 }
 
 .person__logo {
-    max-height: 100%;
+    /*// careful*/
+    max-height: 15rem;
 }
 
 .person__data {
@@ -62,9 +63,3 @@
     font-size: 1.5rem;
 }
 
-.comments {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 1rem;
-}
