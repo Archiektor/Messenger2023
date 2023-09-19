@@ -1,3 +1,7 @@
+.post {
+    margin: 1rem 0;
+}
+
 .post__text {
     font-size: 1.1rem;
     position: relative;
@@ -16,4 +20,10 @@
     position: absolute;
     left: -30px;
     top: 1px;
+}
+
+.post__like {
+    display: block;
+    position: relative;
+    left: 35%;
 }
