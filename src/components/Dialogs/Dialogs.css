@@ -1,0 +1,26 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+}
+
+.dialogs__items, .dialogs__messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1.5rem;
+    border: 1px solid black;
+}
+
+.dialog__active {
+    color: hotpink;
+    font-weight: 500;
+}
+
+/*.dialogs__items {*/
+/*    background-color: aquamarine;*/
+/*}*/
+
+/*.dialogs__messages {*/
+/*    background-color: darkgray;*/
+/*}*/

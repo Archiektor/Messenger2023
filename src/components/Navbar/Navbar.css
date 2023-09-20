@@ -19,6 +19,14 @@
     color: white;
 }
 
+.nav__list__item:hover {
+    color: limegreen;
+}
+
+.nav__list__item:focus {
+    color: forestgreen;
+}
+
 .nav__list__item:last-child {
     margin-top: 2rem;
 }
