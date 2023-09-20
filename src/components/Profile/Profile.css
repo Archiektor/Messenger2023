@@ -1,58 +1,5 @@
-.bg-wrapper {
-    background-color: #fff;
-}
-
-.bg-wrapper__img {
-    width: 100%;
-    max-height: 30vh;
-}
-
-.content__info {
+.content {
     background-color: #63d27f;
     display: flex;
     flex-direction: column;
 }
-
-.content__info > div {
-    /*delete after*/
-    max-height: fit-content;
-    border: 2px red solid;
-}
-
-.person {
-    display: flex;
-    justify-content: start;
-}
-
-.person__logo-wrapper {
-    max-height: 100%;
-    padding: 0.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.person__logo {
-    /*// careful*/
-    max-height: 15rem;
-}
-
-.person__data {
-    margin-left: 1.5rem;
-}
-
-.data-wrapper {
-    list-style-type: none;
-}
-
-.data-wrapper li {
-    font-size: 1.2rem;
-    font-weight: 400;
-}
-
-.data-wrapper li:first-child {
-    margin-bottom: 2rem;
-    font-weight: 500;
-    font-size: 1.5rem;
-}
-
