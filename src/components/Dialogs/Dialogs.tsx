@@ -28,24 +28,22 @@ const Dialogs = () => {
         {messageId: 3, message: 'Nightwish'},
     ]
 
-    let arr = []
-
     return (
         <div className={`dialogs`}>
             <div className={`dialogs__items`}>
                 {
                     usersData.map(({userId, userName}) =>
                         <DialogItem userId={userId} userName={userName}/>)
-            }
+                }
+            </div>
+            <div className={`dialogs__messages`}>
+                {
+                    messagesData.map(({messageId, message}) =>
+                        <MessageItem messageId={messageId} message={message}/>)
+                }
+            </div>
         </div>
-    <div className={`dialogs__messages`}>
-        {
-            messagesData.map(({messageId, message}) =>
-                <MessageItem messageId={messageId} message={message}/>)
-        }
-    </div>
-</div>
-)
+    )
 }
 
 export default Dialogs;
