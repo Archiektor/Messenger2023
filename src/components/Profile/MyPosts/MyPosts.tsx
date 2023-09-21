@@ -1,8 +1,22 @@
 import React from "react";
 import './MyPosts.css';
-import Post from "../Post/Post";
+import Post from "./Post/Post";
+
+type PostsType = {
+    postId: number,
+    message: string,
+    likesCount: number
+}
 
 const MyPosts = () => {
+    const postsData: Array<PostsType> = [
+        {postId: 1, message: `Comment #1`, likesCount: 0},
+        {postId: 2, message: `Comment #2`, likesCount: 3},
+        {postId: 3, message: `Comment #3`, likesCount: 5},
+        {postId: 4, message: `Comment #4`, likesCount: 7},
+        {postId: 5, message: `Comment #5`, likesCount: 9},
+    ]
+
     return (
         <div className={'posts-wrapper'}>
             <div className={'posts'}>
@@ -13,11 +27,11 @@ const MyPosts = () => {
                 </div>
             </div>
             <div className={'comments'}>
-                <Post message={`Comment #1`} likesCount={0}/>
-                <Post message={`Comment #2`} likesCount={3}/>
-                <Post message={`Comment #3`} likesCount={5}/>
-                <Post message={`Comment #4`} likesCount={7}/>
-                <Post message={`Comment #5`} likesCount={9}/>
+                {
+                    postsData.map(({postId, message, likesCount}) =>
+                        <Post postId={postId} message={message} likesCount={likesCount}/>
+                    )
+                }
             </div>
         </div>
     )
