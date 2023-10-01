@@ -10,7 +10,7 @@
 
 .app-wrapper__content {
     grid-area: content;
-    background-color: greenyellow;
+    /*background-color: greenyellow;*/
     display: flex;
     flex-direction: column;
 }

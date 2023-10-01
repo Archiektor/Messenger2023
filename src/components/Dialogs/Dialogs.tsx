@@ -33,13 +33,13 @@ const Dialogs = () => {
             <div className={`dialogs__items`}>
                 {
                     usersData.map(({userId, userName}) =>
-                        <DialogItem userId={userId} userName={userName}/>)
+                        <DialogItem key={userId} userId={userId} userName={userName}/>)
                 }
             </div>
             <div className={`dialogs__messages`}>
                 {
                     messagesData.map(({messageId, message}) =>
-                        <MessageItem messageId={messageId} message={message}/>)
+                        <MessageItem key={messageId} messageId={messageId} message={message}/>)
                 }
             </div>
         </div>

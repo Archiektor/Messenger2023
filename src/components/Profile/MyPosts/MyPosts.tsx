@@ -29,7 +29,7 @@ const MyPosts = () => {
             <div className={'comments'}>
                 {
                     postsData.map(({postId, message, likesCount}) =>
-                        <Post postId={postId} message={message} likesCount={likesCount}/>
+                        <Post key={postId} postId={postId} message={message} likesCount={likesCount}/>
                     )
                 }
             </div>
