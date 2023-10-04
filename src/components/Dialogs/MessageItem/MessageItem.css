@@ -1,0 +1,17 @@
+.message {
+    position: relative;
+    padding: .25rem;
+    font-weight: 500;
+    /*border: 1px black solid;*/
+}
+
+.message:before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: -7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: yellowgreen;
+}

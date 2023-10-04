@@ -4,11 +4,11 @@
     grid-column-gap: 1rem;
 }
 
-.dialogs__items, .dialogs__messages {
+.dialogs__users, .dialogs__messages {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 1.5rem;
+    padding: 0.75rem;
     border: 1px solid black;
 }
 

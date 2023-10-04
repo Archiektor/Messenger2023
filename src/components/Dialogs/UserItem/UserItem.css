@@ -1,0 +1,22 @@
+
+.user__wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0.15rem 0;
+}
+
+.user__logo {
+    width: 2rem;
+    height: 2rem;
+    background-image: linear-gradient(to right bottom, #e66465, #9198e5);
+    margin-right: 0.5rem;
+}
+
+.user__name {
+    font-size: 1.05rem;
+    font-weight: normal;
+    text-decoration: none;
+    color: #4c98cc;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75);
+}

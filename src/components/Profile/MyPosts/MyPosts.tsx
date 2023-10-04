@@ -1,21 +1,13 @@
 import React from "react";
 import './MyPosts.css';
 import Post from "./Post/Post";
+import {PostType} from '../../../redux/state';
 
-type PostsType = {
-    postId: number,
-    message: string,
-    likesCount: number
+type MyPostsType = {
+    posts: Array<PostType>
 }
 
-const MyPosts = () => {
-    const postsData: Array<PostsType> = [
-        {postId: 1, message: `Comment #1`, likesCount: 0},
-        {postId: 2, message: `Comment #2`, likesCount: 3},
-        {postId: 3, message: `Comment #3`, likesCount: 5},
-        {postId: 4, message: `Comment #4`, likesCount: 7},
-        {postId: 5, message: `Comment #5`, likesCount: 9},
-    ]
+const MyPosts: React.FC<MyPostsType> = ({posts}) => {
 
     return (
         <div className={'posts-wrapper'}>
@@ -28,7 +20,7 @@ const MyPosts = () => {
             </div>
             <div className={'comments'}>
                 {
-                    postsData.map(({postId, message, likesCount}) =>
+                    posts.map(({postId, message, likesCount}) =>
                         <Post key={postId} postId={postId} message={message} likesCount={likesCount}/>
                     )
                 }

@@ -8,16 +8,25 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from './components/News/News';
+import {StateType} from './redux/state';
 
-function App() {
+type AppType = {
+    state: StateType
+}
+
+const App: React.FC<AppType> = ({state}) => {
+    const {profilePage, dialogsPage} = state;
+
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className={`app-wrapper__content`}>
-                    <Route path={`/profile`} render={() => <Profile/>}/>
-                    <Route path={`/dialogs`} render={() => <Dialogs/>}/>
+                    {/*added exact to override bug behavior*/}
+                    <Route exact={true} path={`/profile`} render={() => <Profile state={profilePage.postsData}/>}/>
+                    <Route path={`/dialogs`}
+                           render={() => <Dialogs state={dialogsPage}/>}/>
                     <Route path={`/news`} render={() => <News/>}/>
                     <Route path={`/music`} render={() => <Music/>}/>
                     <Route path={`/settings`} render={() => <Settings/>}/>

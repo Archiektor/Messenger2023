@@ -1,45 +1,32 @@
 import React from 'react';
 import './Dialogs.css';
-import DialogItem from "./DialogItem/DialogItem";
-import MessageItem from "./MessageItem/MessageItem";
+import UserItem from "./UserItem/UserItem";
+import DialogItem from "./MessageItem/MessageItem";
+import {DialogType, UserType} from '../../redux/state';
 
-type usersType = {
-    userId: number,
-    userName: string
+type DialogsType = {
+    state: {
+        usersData: Array<UserType>
+        dialogsData: Array<DialogType>
+    }
+
 }
 
-type messagesType = {
-    messageId: number,
-    message: string
-}
-
-const Dialogs = () => {
-    const usersData: Array<usersType> = [
-        {userId: 1, userName: 'Dimych'},
-        {userId: 2, userName: 'Sveta'},
-        {userId: 3, userName: 'Viktor'},
-        {userId: 4, userName: 'Valera'},
-        {userId: 5, userName: 'Vlad'},
-    ]
-
-    const messagesData: Array<messagesType> = [
-        {messageId: 1, message: 'Bla-bla'},
-        {messageId: 2, message: 'La-La-Land'},
-        {messageId: 3, message: 'Nightwish'},
-    ]
+const Dialogs: React.FC<DialogsType> = ({state}) => {
+    const {usersData: users, dialogsData: dialogs} = state;
 
     return (
         <div className={`dialogs`}>
-            <div className={`dialogs__items`}>
+            <div className={`dialogs__users`}>
                 {
-                    usersData.map(({userId, userName}) =>
-                        <DialogItem key={userId} userId={userId} userName={userName}/>)
+                    users.map(({userId, userName}) =>
+                        <UserItem key={userId} userId={userId} userName={userName}/>)
                 }
             </div>
             <div className={`dialogs__messages`}>
                 {
-                    messagesData.map(({messageId, message}) =>
-                        <MessageItem key={messageId} messageId={messageId} message={message}/>)
+                    dialogs.map(({messageId, message}) =>
+                        <DialogItem key={messageId} messageId={messageId} message={message}/>)
                 }
             </div>
         </div>
