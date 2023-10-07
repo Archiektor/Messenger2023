@@ -6,14 +6,15 @@ import {PostType} from '../../redux/state';
 
 type ProfileType = {
     state: Array<PostType>
+    addPost: (postMessage: string) => void
 }
 
-const Profile: React.FC<ProfileType> = ({state}) => {
+const Profile: React.FC<ProfileType> = ({state, addPost}) => {
 
     return (
         <div className={`content`}>
             <ProfileInfo/>
-            <MyPosts posts={state}/>
+            <MyPosts posts={state} addPost={addPost}/>
         </div>
     )
 }

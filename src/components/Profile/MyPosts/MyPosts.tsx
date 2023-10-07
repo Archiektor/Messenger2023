@@ -5,18 +5,22 @@ import {PostType} from '../../../redux/state';
 
 type MyPostsType = {
     posts: Array<PostType>
+    addPost: (postMessage: string) => void
 }
 
-const MyPosts: React.FC<MyPostsType> = ({posts}) => {
+const MyPosts: React.FC<MyPostsType> = ({posts, addPost}) => {
 
     const newPostElement = React.createRef<HTMLInputElement>();
 
-    const addPost = () => {
+    const addNewPost = () => {
         let text = '';
         if (newPostElement.current) {
             text = newPostElement.current.value;
         }
-        alert(text);
+        addPost(text);
+        if (newPostElement.current) {
+            newPostElement.current.value = '';
+        }
     }
 
     return (
@@ -26,7 +30,7 @@ const MyPosts: React.FC<MyPostsType> = ({posts}) => {
                     <h3 className={`new-post__title`}>My posts</h3>
                     <input ref={newPostElement} className={`new-post__write-text`} type="text"
                            placeholder={`your news`}/>
-                    <button onClick={() => addPost()} className={`new-post__send-btn`}>Send</button>
+                    <button onClick={() => addNewPost()} className={`new-post__send-btn`}>Send</button>
                 </div>
             </div>
             <div className={'comments'}>

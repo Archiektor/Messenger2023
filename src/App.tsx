@@ -12,9 +12,10 @@ import {StateType} from './redux/state';
 
 type AppType = {
     state: StateType
+    addPost: (postMessage:string) => void
 }
 
-const App: React.FC<AppType> = ({state}) => {
+const App: React.FC<AppType> = ({state,addPost}) => {
     const {profilePage, dialogsPage} = state;
 
     return (
@@ -24,7 +25,7 @@ const App: React.FC<AppType> = ({state}) => {
             <Navbar/>
             <div className={`app-wrapper__content`}>
                 {/*added exact to override bug behavior*/}
-                <Route exact={true} path={`/profile`} render={() => <Profile state={profilePage.postsData}/>}/>
+                <Route exact={true} path={`/profile`} render={() => <Profile state={profilePage.postsData} addPost={addPost}/>}/>
                 <Route path={`/dialogs`}
                        render={() => <Dialogs state={dialogsPage}/>}/>
                 <Route path={`/news`} render={() => <News/>}/>
