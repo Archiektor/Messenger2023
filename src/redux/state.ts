@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from '../render';
+let rerenderEntireTree = (state: StateType) => {
+    console.log('State changed')
+}
 
 export type PostType = {
     postId: number,
@@ -18,7 +20,8 @@ export type DialogType = {
 
 export type StateType = {
     profilePage: {
-        postsData: Array<PostType>
+        postsData: Array<PostType>,
+        newPostText: string
     }
     dialogsPage: {
         usersData: Array<UserType>
@@ -34,7 +37,8 @@ export const state: StateType = {
             {postId: 3, message: `Comment #3`, likesCount: 5},
             {postId: 4, message: `Comment #4`, likesCount: 7},
             {postId: 5, message: `Comment #5`, likesCount: 9},
-        ]
+        ],
+        newPostText: '',
     },
     dialogsPage: {
         usersData: [
@@ -52,13 +56,27 @@ export const state: StateType = {
     }
 }
 
-export const addPost = (postMessage: string) => {
+export const addPost = () => {
     let newPost: PostType = {
         postId: state['profilePage']['postsData'].length + 1,
-        message: postMessage,
+        message: state['profilePage']['newPostText'],
         likesCount: 0,
     }
     state['profilePage']['postsData'].push(newPost);
+    state['profilePage']['newPostText'] = '';
     //debugger;
+    // @ts-ignore
     rerenderEntireTree(state);
+}
+
+export const changePostValue = (text: string) => {
+    state['profilePage']['newPostText'] = text;
+    //debugger;
+    //console.log(state['profilePage']['newPostText'])
+    // @ts-ignore
+    rerenderEntireTree(state);
+}
+
+export const subscriber = (observer: (state: StateType) => void) => {
+    rerenderEntireTree = observer;
 }
