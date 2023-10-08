@@ -18,6 +18,7 @@ const MyPosts: React.FC<MyPostsType> = ({profilePage, addPost, changePostValue})
 
     const addNewPost = () => {
         addPost();
+        console.log('called in MyPosts')
         // if (newPostElement.current) {
         //     changePostValue('');
         // }
