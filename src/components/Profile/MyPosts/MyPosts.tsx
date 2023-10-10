@@ -1,32 +1,28 @@
 import React from "react";
 import './MyPosts.css';
 import Post from "./Post/Post";
-import {PostType} from '../../../redux/state';
+import {DispatchType, PostType} from '../../../redux/state';
 
 type MyPostsType = {
     profilePage: {
         postsData: Array<PostType>,
         newPostText: string
     }
-    addPost: () => void
-    changePostValue: (symbol: string) => void
+    dispatch: DispatchType
 }
 
-const MyPosts: React.FC<MyPostsType> = ({profilePage, addPost, changePostValue}) => {
+const MyPosts: React.FC<MyPostsType> = ({profilePage, dispatch}) => {
 
     const newPostElement = React.createRef<HTMLInputElement>();
 
     const addNewPost = () => {
-        addPost();
-        console.log('called in MyPosts')
-        // if (newPostElement.current) {
-        //     changePostValue('');
-        // }
+        dispatch({type: 'ADD-POST'});
     }
 
     const readValue = () => {
         if (newPostElement.current) {
-            changePostValue(newPostElement.current.value);
+            let text = newPostElement.current.value;
+            dispatch({type: 'CHANGE-POST-VALUE', text})
         }
     }
 

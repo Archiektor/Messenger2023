@@ -26,18 +26,22 @@ export type StateType = {
 }
 
 type RerenderEntireTree = (state: StateType) => void
-type AddPostType = () => void
-type ChangePostValueType = (text: string) => void
 type SubscriberType = (observer: (state: StateType) => void) => void
 type GetStateType = () => StateType
+export type DispatchType = (action: ActionType) => void
 
 type StoreType = {
     _state: StateType
     _callSubscriber: RerenderEntireTree
-    addPost: AddPostType
-    changePostValue: ChangePostValueType
     subscriber: SubscriberType
     getState: GetStateType
+    dispatch: DispatchType
+
+}
+
+type ActionType = {
+    type: 'ADD-POST' | 'CHANGE-POST-VALUE'
+    text?: string
 }
 
 export const store: StoreType = {
@@ -70,26 +74,32 @@ export const store: StoreType = {
     _callSubscriber(state: StateType) {
         console.log('State changed')
     },
-    addPost() {
-        let newPost: PostType = {
-            postId: store.getState()['profilePage']['postsData'].length + 1,
-            message: store.getState()['profilePage']['newPostText'],
-            likesCount: 0,
-        }
-        this.getState()['profilePage']['postsData'].push(newPost);
-        this.getState()['profilePage']['newPostText'] = '';
-        this._callSubscriber(this.getState());
-    },
-    changePostValue(text: string) {
-        this.getState()['profilePage']['newPostText'] = text;
-        this._callSubscriber(this.getState());
-    },
+
     subscriber(observer: (state: StateType) => void) {
         this._callSubscriber = observer;
     },
     getState() {
         return this._state
+    },
+
+    dispatch(action: ActionType) {
+        if (action.type === `ADD-POST`) {
+            let newPost: PostType = {
+                postId: store.getState()['profilePage']['postsData'].length + 1,
+                message: store.getState()['profilePage']['newPostText'],
+                likesCount: 0,
+            }
+            this.getState()['profilePage']['postsData'].push(newPost);
+            this.getState()['profilePage']['newPostText'] = '';
+            this._callSubscriber(this.getState());
+        } else if (action.type === `CHANGE-POST-VALUE`) {
+            if (action.text != null) {
+                this.getState()['profilePage']['newPostText'] = action.text;
+            }
+            this._callSubscriber(this.getState());
+        }
     }
+
 }
 
 // window.store = store;

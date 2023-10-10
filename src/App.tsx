@@ -8,15 +8,14 @@ import {Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from './components/News/News';
-import {StateType} from './redux/state';
+import {DispatchType, StateType} from './redux/state';
 
 type AppType = {
     state: StateType
-    addPost: () => void
-    changePostValue: (symbol: string) => void
+    dispatch: DispatchType
 }
 
-const App: React.FC<AppType> = ({state, addPost, changePostValue}) => {
+const App: React.FC<AppType> = ({state, dispatch}) => {
     const {profilePage, dialogsPage} = state;
 
     return (
@@ -26,8 +25,8 @@ const App: React.FC<AppType> = ({state, addPost, changePostValue}) => {
             <Navbar/>
             <div className={`app-wrapper__content`}>
                 {/*added exact to override bug behavior*/}
-                <Route exact={true} path={`/profile`} render={() => <Profile state={profilePage} addPost={addPost}
-                                                                             changePostValue={changePostValue}/>}/>
+                <Route exact={true} path={`/profile`}
+                       render={() => <Profile state={profilePage} dispatch={dispatch}/>}/>
                 <Route path={`/dialogs`}
                        render={() => <Dialogs state={dialogsPage}/>}/>
                 <Route path={`/news`} render={() => <News/>}/>

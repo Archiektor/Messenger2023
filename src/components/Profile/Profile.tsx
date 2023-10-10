@@ -2,23 +2,22 @@ import React from "react";
 import './Profile.css';
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {PostType} from '../../redux/state';
+import {DispatchType, PostType} from '../../redux/state';
 
 type ProfileType = {
     state: {
         postsData: Array<PostType>,
         newPostText: string
     }
-    addPost: () => void
-    changePostValue: (symbol: string) => void
+    dispatch: DispatchType
 }
 
-const Profile: React.FC<ProfileType> = ({state, addPost, changePostValue}) => {
+const Profile: React.FC<ProfileType> = ({state, dispatch}) => {
 
     return (
         <div className={`content`}>
             <ProfileInfo/>
-            <MyPosts profilePage={state} addPost={addPost} changePostValue={changePostValue}/>
+            <MyPosts profilePage={state} dispatch={dispatch}/>
         </div>
     )
 }
