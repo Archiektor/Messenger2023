@@ -10,7 +10,7 @@ export const readMessageActionCreator: readMessageActionCreatorType = (text: str
     text
 })
 
-const initialState:DialogsPageType = {
+const initialState: DialogsPageType = {
     usersData: [
         {userId: 1, userName: 'Dimych'},
         {userId: 2, userName: 'Sveta'},
@@ -27,6 +27,7 @@ const initialState:DialogsPageType = {
 }
 
 const dialogReducer: DialogReducerType = (state = initialState, action) => {
+    debugger;
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage: MessageType = {
@@ -38,6 +39,7 @@ const dialogReducer: DialogReducerType = (state = initialState, action) => {
             return state;
         case CHANGE_MESSAGE_VALUE:
             if (action.text != null) {
+                debugger;
                 state.newMessage = action.text;
             }
             return state;

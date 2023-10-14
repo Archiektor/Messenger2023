@@ -3,20 +3,19 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from './components/News/News';
-import {DispatchType, StateType} from './redux/state';
+import {ActionType, DialogsPageType, ProfilePageType} from './redux/state';
+import {EmptyObject, Store} from 'redux';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 type AppType = {
-    state: StateType
-    dispatch: DispatchType
+    store: Store<EmptyObject & { profilePage: ProfilePageType, dialogsPage: DialogsPageType }, ActionType>
 }
 
-const App: React.FC<AppType> = ({state, dispatch}) => {
-    const {profilePage, dialogsPage} = state;
+const App: React.FC<AppType> = ({store}) => {
 
     return (
 
@@ -26,9 +25,9 @@ const App: React.FC<AppType> = ({state, dispatch}) => {
             <div className={`app-wrapper__content`}>
                 {/*added exact to override bug behavior*/}
                 <Route exact={true} path={`/profile`}
-                       render={() => <Profile state={profilePage} dispatch={dispatch}/>}/>
+                       render={() => <Profile store={store}/>}/>
                 <Route path={`/dialogs`}
-                       render={() => <Dialogs state={dialogsPage} dispatch={dispatch}/>}/>
+                       render={() => <DialogsContainer store={store}/>}/>
                 <Route path={`/news`} render={() => <News/>}/>
                 <Route path={`/music`} render={() => <Music/>}/>
                 <Route path={`/settings`} render={() => <Settings/>}/>

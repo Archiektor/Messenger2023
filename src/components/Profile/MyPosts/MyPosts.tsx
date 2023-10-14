@@ -1,29 +1,29 @@
 import React from "react";
 import './MyPosts.css';
 import Post from "./Post/Post";
-import {DispatchType, PostType} from '../../../redux/state';
-import {addPostActionCreator, readValueActionCreator} from '../../../redux/profileReducer';
+import {PostType} from '../../../redux/state';
 
 type MyPostsType = {
-    profilePage: {
-        postsData: Array<PostType>,
-        newPostText: string
-    }
-    dispatch: DispatchType
+    posts: PostType[],
+    newPostText: string
+    addNewPost: () => void
+    readValue: (text: string) => void
 }
 
-const MyPosts: React.FC<MyPostsType> = ({profilePage, dispatch}) => {
+const MyPosts: React.FC<MyPostsType> = ({posts, newPostText, addNewPost, readValue}) => {
 
     const newPostElement = React.createRef<HTMLInputElement>();
 
-    const addNewPost = () => {
-        dispatch(addPostActionCreator());
+    const addNewPostOnClick = () => {
+        //dispatch(addPostActionCreator());
+        addNewPost()
     }
 
-    const readValue = () => {
+    const readPostValue = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value;
-            dispatch(readValueActionCreator(text))
+            //dispatch(readValueActionCreator(text))
+            readValue(text)
         }
     }
 
@@ -32,17 +32,17 @@ const MyPosts: React.FC<MyPostsType> = ({profilePage, dispatch}) => {
             <div className={'posts'}>
                 <div className={`new-post`}>
                     <h3 className={`new-post__title`}>My posts</h3>
-                    <input onChange={() => readValue()} ref={newPostElement} className={`new-post__write-text`}
-                           type="text" value={profilePage.newPostText}
+                    <input onChange={() => readPostValue()} ref={newPostElement} className={`new-post__write-text`}
+                           type="text" value={newPostText}
                            placeholder={`your news`}/>
-                    <button onClick={() => addNewPost()}
+                    <button onClick={() => addNewPostOnClick()}
                             className={`new-post__send-btn`}>Send
                     </button>
                 </div>
             </div>
             <div className={'comments'}>
                 {
-                    profilePage.postsData.map(({postId, message, likesCount}) =>
+                    posts.map(({postId, message, likesCount}) =>
                         <Post key={postId} postId={postId} message={message} likesCount={likesCount}/>
                     )
                 }

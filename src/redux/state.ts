@@ -92,7 +92,7 @@ export const store: StoreType = {
         }
     },
     _callSubscriber(state: StateType) {
-        console.log('State changed')
+        console.log('State changed', state)
     },
 
     subscriber(observer: (state: StateType) => void) {
