@@ -2,6 +2,7 @@ import React from "react";
 import './MyPosts.css';
 import Post from "./Post/Post";
 import {DispatchType, PostType} from '../../../redux/state';
+import {addPostActionCreator, readValueActionCreator} from '../../../redux/profileReducer';
 
 type MyPostsType = {
     profilePage: {
@@ -16,13 +17,13 @@ const MyPosts: React.FC<MyPostsType> = ({profilePage, dispatch}) => {
     const newPostElement = React.createRef<HTMLInputElement>();
 
     const addNewPost = () => {
-        dispatch({type: 'ADD-POST'});
+        dispatch(addPostActionCreator());
     }
 
     const readValue = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value;
-            dispatch({type: 'CHANGE-POST-VALUE', text})
+            dispatch(readValueActionCreator(text))
         }
     }
 

@@ -17,6 +17,23 @@
     font-weight: 500;
 }
 
+.dialogs__input {
+    margin-left: 1.25rem;
+    max-width: 15rem;
+}
+
+.dialogs__send-btn {
+    width: 5rem;
+    align-self: end;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.1rem;
+    background-color: lightblue;
+    border: none;
+    margin-right: 0.75rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
+}
+
 /*.dialogs__items {*/
 /*    background-color: aquamarine;*/
 /*}*/
